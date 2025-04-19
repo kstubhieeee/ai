@@ -8,8 +8,14 @@ Before running the experiments, make sure you have Python 3.x installed. Then in
 
 ```bash
 pip install sympy
+```
+```
 pip install pgmpy
+```
+```
 pip install networkx
+```
+```
 pip install matplotlib
 ```
 
