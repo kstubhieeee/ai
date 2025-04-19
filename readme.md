@@ -28,10 +28,10 @@ pip install matplotlib
 
 #### Execution:
 ```bash
-python exp3_BFS.py  # Run BFS algorithm
+python exp3_BFS.py  
 ```
 ```bash
-python exp3_DFS.py  # Run DFS algorithm
+python exp3_DFS.py  
 ```
 Both files contain a sample graph implementation and will show the traversal order of nodes.
 
