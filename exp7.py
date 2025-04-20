@@ -1,45 +1,22 @@
 tab = []
 result = []
 goalList = ["a", "b", "c", "d", "e"]
+problem = ["c", "a", "e", "d", "b"]
 
-def parSolution(N):
-    for i in range(N):
-        if goalList[i] != result[i]:
-            return False
-    return True
+while problem:
+    tab.append(problem.pop())
 
-def Onblock(index, count):
-    if count == len(goalList) + 1:
-        return True
-    block = tab[index]
-    result.append(block)
-    print(result)
-    if parSolution(count):
-        print("Pushed a result solution")
-        tab.remove(block)
-        Onblock(0, count + 1)
+print("Initial tab :",tab)
+count = 0
+while tab and len(result) < len(goalList):
+    count = count + 1 
+    if tab[-1] == goalList[len(result)]:
+        result.append(tab.pop())
+        print("Step ",count," :")
+        print(tab)
     else:
-        print("result solution not possible, back to the tab")
-        result.pop()
-        Onblock(index + 1, count)
+        tab.insert(0, tab.pop()) 
+        print("Step ",count," :")
+        print(tab)
 
-def Ontab(problem):
-    if len(problem) != 0:
-        tab.append(problem.pop())
-        Ontab(problem)
-    else:
-        return True
-
-def goal_stack_planing(problem):
-    Ontab(problem)
-    if Onblock(0, 1):
-        print(result)
-
-if __name__ == "__main__":
-    problem = ["c", "a", "e", "d", "b"]
-    print("Goal Problem")
-    for k, j in zip(goalList, problem):
-        print(k + " " + j)
-    goal_stack_planing(problem)
-    print("result Solution")
-    print(result)
+print("Final Result:", result)
