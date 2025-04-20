@@ -2,7 +2,7 @@ from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
 import networkx as nx
-import pylab as plt
+import matplotlib.pyplot as plt
 
 model = DiscreteBayesianNetwork([('Guest', 'Monty'), ('Price', 'Monty')])
 
@@ -37,16 +37,25 @@ print('Joint probability distribution, P(Monty | Guest, Price)')
 print(cpd_monty)
 print()
 
+plt.figure(figsize=(10, 8))
+
 G = nx.DiGraph()
 G.add_nodes_from(model.nodes())
 G.add_edges_from(model.edges())
-pos = nx.spring_layout(G)  # You can change layout as needed
-nx.draw(G, pos, with_labels=True, node_color="skyblue", node_size=2000, font_size=12)
-plt.title("Monty Hall Bayesian Network")
-plt.savefig('Data.png')
-plt.close()
+pos = nx.spring_layout(G, k=1, iterations=50)
+nx.draw(G, pos, with_labels=True, 
+        node_color="lightblue",
+        node_size=3000, 
+        font_size=16,
+        font_weight='bold',
+        arrows=True,
+        edge_color='gray',
+        arrowsize=20)
 
-plt.savefig('Data.png')
+plt.title("Monty Hall Bayesian Network", pad=20, size=16)
+
+plt.tight_layout()
+plt.savefig('Data.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 infer = VariableElimination(model)
