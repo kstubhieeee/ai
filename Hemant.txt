@@ -1,0 +1,70 @@
+Aim: To implement Planning Programming. 
+
+Title: To implement Goal Stack Planning using Python. 
+
+Theory: Goal Stack Planning is a popular artificial intelligence technique used for planning and 
+
+problem-solving tasks. It involves breaking down complex tasks into a series of sub-goals and 
+
+actions to achieve those goals. Goal Stack Planning follows a top-down approach to 
+
+problemsolving. It starts with a high-level goal and recursively breaks it down into sub-goals 
+
+until the sub-goals can be directly achieved through a sequence of actions. The main idea is to 
+
+find a plan to achieve the initial goal by reducing it to simpler sub-goals and, eventually, to a 
+
+sequence of executable actions.
+
+Algorithm: Goal Stack Planning 1. Push the original goal on the stack. 2. Repeat step a to d until 
+
+the stack becomes empty. 1. If TOP is a compound goal, push its unfinished subgoals onto the 
+
+stack. 2. If TOP is a single unfinished goal then, replace it with an action and push the action’s 
+
+precondition on the stack to satisfy the condition. 3. If TOP is an action, 1. Pop the action 2. 
+
+Execute the action 3. update the knowledge base with effects of the action 4. If TOP is a 
+
+satisfied goal, pop it.
+
+Code: 
+
+Tab = []
+
+Result = []
+
+goalList = [“a”, “b”, “c”, “d”, “e”]
+
+problem = [“c”, “a”, “e”, “d”, “b”]
+
+while problem:
+
+ tab.append(problem.pop())
+
+print(“Initial tab :”,tab)
+count = 0
+
+while tab and len(result) < len(goalList):
+
+ count = count + 1 
+
+ if tab[-1] == goalList[len(result)]:
+
+ result.append(tab.pop())
+
+ print(“Step “,count,” :”)
+
+ print(tab)
+
+ else:
+
+ tab.insert(0, tab.pop()) 
+
+ print(“Step “,count,” :”)
+
+ print(tab)
+
+print(“Final Result:”, result)
+
+# for execution - python exp7.py
